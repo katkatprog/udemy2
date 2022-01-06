@@ -9,3 +9,5 @@ services:
     volumes:
       - ./backend:$WORK_DIR
     command: ["python", "manage.py", "runserver", "0:8000"]
+    ports:
+      - "$BACK_PORT:8000"
