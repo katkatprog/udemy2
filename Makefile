@@ -5,4 +5,4 @@ project:
 	docker-compose run --rm backend django-admin startproject $(default_project) .
 
 app:
-	python manage.py startapp $(default_app)
+	docker-compose run --rm backend python manage.py startapp $(default_app)
