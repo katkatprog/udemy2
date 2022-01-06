@@ -1,2 +1,2 @@
 app:
-	django-admin startproject proj
+	docker-compose run -rm django-admin startproject proj
