@@ -6,4 +6,6 @@ services:
       dockerfile: Dockerfile
       args:
         WORK_DIR: $WORK_DIR
+      volumes:
+        - ./backend:$WORK_DIR
     command: ["python", "manage.py", "runserver", "0:8000"]
