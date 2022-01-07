@@ -5,3 +5,4 @@ ipython
 django-extensions
 django-cors-headers
 tzdata
+mysqlclient

@@ -5,11 +5,19 @@ services:
       context: ./backend
       args:
         WORK_DIR: $WORK_DIR
+    environment:
+      DB_PORT: $DB_PORT
+      DB_NAME: $DB_NAME
+      DB_USER: $DB_USER
+      DB_PASS: $DB_PASS
+      DB_ROOT_PASS: $DB_ROOT_PASS
     volumes:
       - ./backend:$WORK_DIR
     command: sh -c "python manage.py runserver 0:8000"
     ports:
       - "$BACK_PORT:8000"
+    depends_on:
+      - db
 
   db:
     image: mysql:5.7.22
@@ -23,6 +31,7 @@ services:
       - db_store:/var/lib/mysql
     ports:
       - $DB_PORT:3306
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
 volumes:
   db_store:
