@@ -3,11 +3,26 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile
       args:
         WORK_DIR: $WORK_DIR
     volumes:
       - ./backend:$WORK_DIR
-    command: ["python", "manage.py", "runserver", "0:8000"]
+    command: sh -c "python manage.py runserver 0:8000"
     ports:
       - "$BACK_PORT:8000"
+
+  db:
+    image: mysql:5.7.22
+    restart: always
+    environment:
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+    volumes:
+      - db_store:/var/lib/mysql
+    ports:
+      - $DB_PORT:3306
+
+volumes:
+  db_store:
