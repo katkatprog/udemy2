@@ -6,3 +6,4 @@ django-extensions
 django-cors-headers
 tzdata
 mysqlclient
+django-environ

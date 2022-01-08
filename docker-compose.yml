@@ -6,6 +6,7 @@ services:
       args:
         WORK_DIR: $WORK_DIR
     environment:
+      # BACK_SECRET_KEY: $BACK_SECRET_KEY
       DB_PORT: $DB_PORT
       DB_NAME: $DB_NAME
       DB_USER: $DB_USER
