@@ -1,5 +1,21 @@
 version: '3.8'
+
 services:
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        WORK_DIR: $WORK_DIR
+    volumes: 
+      - ./frontend:$WORK_DIR
+      - front_node_modules:$WORK_DIR/$FRONT_PROJECT_NAME/node_modules
+    command: sh -c "cd $FRONT_PROJECT_NAME && npm run dev"
+
+    ports:
+      - "$FRONT_PORT:3000"
+    depends_on:
+      - backend
+
   backend:
     build:
       context: ./backend
@@ -36,3 +52,4 @@ services:
 
 volumes:
   db_store:
+  front_node_modules:
