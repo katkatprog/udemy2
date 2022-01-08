@@ -1,5 +1,5 @@
 FROM python:3.8.9
 ARG WORK_DIR
 WORKDIR ${WORK_DIR}
-COPY . .
+COPY ./requirements.txt .
 RUN pip3 install -r requirements.txt
