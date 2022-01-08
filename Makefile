@@ -10,3 +10,7 @@ django-project:
 # front_node_modulesボリュームにnodeのモジュールをインストールする。
 next-install:
 	docker-compose run --rm frontend sh -c "cd $(FRONT_PROJECT_NAME) && npm install"
+
+rm-volumes:
+	docker volume rm next_django_db_store
+	docker volume rm next_django_front_node_modules
