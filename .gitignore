@@ -1,3 +1,5 @@
 .env
 db.sqlite3
+.bash_history
+.npm
 __pycache__
