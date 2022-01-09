@@ -35,6 +35,12 @@ services:
       - "$BACK_PORT:8000"
     depends_on:
       - db
+    entrypoint:
+      - dockerize
+      - -timeout
+      - 60s
+      - -wait
+      - tcp://db:$DB_PORT
 
   db:
     image: mysql:5.7.22
@@ -48,7 +54,7 @@ services:
       - db_store:/var/lib/mysql
     ports:
       - $DB_PORT:3306
-    # command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
 volumes:
   db_store:
