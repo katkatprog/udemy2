@@ -1,8 +1,11 @@
 include .env
-app_name=app #プロジェクト名(デフォルトでapp)
+app_name=app #アプリケーション名(デフォルトでapp)
 
 django-app:
 	docker-compose run --rm backend sh -c "cd $(BACK_PROJECT_NAME) && python manage.py startapp $(app_name)"
+
+django-shell:
+	docker-compose exec backend sh -c "cd $(BACK_PROJECT_NAME) && python manage.py shell_plus"
 
 # front_node_modulesボリュームにnodeのモジュールをインストールする。
 next-install:
