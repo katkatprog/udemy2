@@ -12,6 +12,9 @@ build:
 	docker-compose build --no-cache
 	@make next-install
 
+db-login:
+	docker-compose exec db sh -c 'mysql -u ${MYSQL_USER} -p${MYSQL_PASSWORD}'
+
 rm-volumes:
 	docker volume rm next_django_db_store
 	docker volume rm next_django_front_node_modules
