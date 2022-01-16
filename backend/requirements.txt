@@ -1,9 +1,10 @@
 Django >=3, <4
 djangorestframework >=3, <4
-bpython
 ipython
 django-extensions
 django-cors-headers
 tzdata
 mysqlclient
 django-environ
+djangorestframework-simplejwt
+djoser
