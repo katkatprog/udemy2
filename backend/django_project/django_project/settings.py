@@ -43,11 +43,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions', #[added]
     'rest_framework', #[added]
-    'rest_framework.authtoken',#[added]
+    # 'rest_framework.authtoken',#[added]
+    'corsheaders', #[added]
+    'djoser', #[added]
     # 'app.apps.AppConfig' #[added]example
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', # [added]
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -56,6 +59,24 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST=[
+    "http://localhost:" + os.environ.get('FRONT_PORT')
+]
+
+SIMPLE_JWT = {
+    'AUTH_HEADER_TYPES': ('JWT', ),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES':[
+        'rest_framework.permissions.IsAuthenticaticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
 
 ROOT_URLCONF = 'django_project.urls'
 
