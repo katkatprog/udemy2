@@ -34,6 +34,7 @@ services:
       DB_USER: $DB_USER
       DB_PASS: $DB_PASS
       DB_ROOT_PASS: $DB_ROOT_PASS
+      FRONT_PORT: $FRONT_PORT
     volumes:
       - ./backend:$WORK_DIR
     command: sh -c "cd $BACK_PROJECT_NAME && python manage.py runserver 0:8000"
