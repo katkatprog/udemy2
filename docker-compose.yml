@@ -15,12 +15,12 @@ services:
       - "$FRONT_PORT:3000"
     depends_on:
       - backend
-    entrypoint:
-      - dockerize
-      - -timeout
-      - 60s
-      - -wait
-      - tcp://backend:$BACK_PORT
+    # entrypoint:
+    #   - dockerize
+    #   - -timeout
+    #   - 60s
+    #   - -wait
+    #   - tcp://backend:$BACK_PORT
 
   backend:
     build:
